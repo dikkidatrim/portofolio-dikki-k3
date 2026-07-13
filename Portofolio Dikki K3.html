@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Dikki Datri Murdoko | HSE Officer & IT Professional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 50: '#f0fdf4', 100: '#dcfce7', 500: '#22c55e', 600: '#16a34a', 700: '#15803d', 900: '#14532d' },
+                        accent: { 500: '#f59e0b', 600: '#d97706' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        ::-webkit-scrollbar { width: 6px; sm:width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .dark ::-webkit-scrollbar-track { background: #0f172a; }
+        .dark ::-webkit-scrollbar-thumb { background: #334155; }
+        .dark ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+        }
+        .dark .glass-nav {
+            background: rgba(15, 23, 42, 0.85);
+            border-bottom: 1px solid rgba(51, 65, 85, 0.6);
+        }
+
+        .section-title { position: relative; display: inline-block; margin-bottom: 1.5rem; sm:margin-bottom: 2rem; }
+        .section-title::after { content: ''; position: absolute; width: 50%; height: 4px; bottom: -10px; left: 0; background-color: #22c55e; border-radius: 2px; }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-40px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(40px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-right.active { opacity: 1; transform: translateX(0); }
+
+        @keyframes blob {
+            0%, 100% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        .animate-blob { animation: blob 10s infinite ease-in-out; }
+        .animation-delay-2000 { animation-delay: 3s; }
+        .animate-spin-slow { animation: spin 15s linear infinite; }
+
+        .typewriter-cursor::after { content: '|'; animation: blink 0.8s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        @media (min-width: 768px) {
+            .tilt-card { transform-style: preserve-3d; transform: perspective(1000px); transition: transform 0.1s ease; }
+            .tilt-card > * { transform: translateZ(30px); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 selection:bg-brand-500 selection:text-white">
+
+    <div id="scroll-indicator" class="fixed top-0 left-0 h-1 bg-red-600 z-[100] transition-all duration-100" style="width: 0%"></div>
+
+    <button id="back-to-top" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-12 h-12 flex items-center justify-center bg-brand-600 text-white rounded-full shadow-2xl opacity-0 translate-y-10 pointer-events-none hover:bg-brand-700 hover:scale-110 active:scale-95 transition-all duration-300" title="Kembali ke Atas">
+        <i class="fa-solid fa-arrow-up text-lg"></i>
+    </button>
+
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 sm:h-20 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2 sm:gap-3 cursor-pointer group" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-red-50 dark:bg-red-900/30 flex items-center justify-center group-hover:bg-red-100 dark:group-hover:bg-red-900/50 transition-colors">
+                        <i class="fa-solid fa-helmet-safety text-red-600 dark:text-red-500 text-base sm:text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                    </div>
+                    <span class="font-bold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">Dikki Datri Murdoko</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-4 lg:space-x-8">
+                    <a href="#home" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-500 after:transition-all hover:after:w-full">Beranda</a>
+                    <a href="#about" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-500 after:transition-all hover:after:w-full">Profil</a>
+                    <a href="#experience" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-500 after:transition-all hover:after:w-full">Pengalaman</a>
+                    <a href="#gallery" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-500 after:transition-all hover:after:w-full">Galeri</a>
+                    <a href="#reports" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-500 after:transition-all hover:after:w-full">Laporan</a>
+                    <a href="#certifications" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-500 after:transition-all hover:after:w-full">Sertifikasi</a>
+                    
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-amber-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors ml-2 focus:outline-none" title="Ubah Tema">
+                        <i id="theme-toggle-icon" class="fa-solid fa-moon text-lg"></i>
+                    </button>
+                </div>
+
+                <div class="md:hidden flex items-center gap-3">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-amber-400 focus:outline-none">
+                        <i id="theme-toggle-icon-mobile" class="fa-solid fa-moon text-lg"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 text-slate-600 dark:text-slate-300 hover:text-brand-600 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 absolute w-full shadow-2xl">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+                <a href="#home" class="block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Beranda</a>
+                <a href="#about" class="block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Profil</a>
+                <a href="#experience" class="block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Pengalaman</a>
+                <a href="#gallery" class="block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Galeri Kegiatan</a>
+                <a href="#reports" class="block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Pelaporan & Analisis</a>
+                <a href="#certifications" class="block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Sertifikasi & Keahlian</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="pt-24 pb-12 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-32 overflow-hidden relative min-h-[100svh] sm:min-h-[90vh] flex items-center">
+        <div id="parallax-dots" class="absolute inset-0 z-0 opacity-[0.05] dark:opacity-[0.03] pointer-events-none transition-transform duration-100 ease-out" style="background-image: radial-gradient(#dc2626 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="flex flex-col-reverse lg:flex-row items-center lg:items-end gap-10 lg:gap-8 mt-4 sm:mt-0">
+                
+                <div class="w-full lg:w-1/2 text-center lg:text-left lg:pb-4 reveal-left active">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-xs sm:text-sm font-semibold mb-6 border border-red-100 dark:border-red-900/50 shadow-sm">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+                        </span>
+                        Tersedia untuk Peluang Baru
+                    </div>
+                    
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight sm:leading-tight mb-4">
+                        Membangun Lingkungan Kerja yang <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-brand-600 block sm:inline">Aman & Produktif</span>
+                    </h1>
+                    
+                    <div class="h-8 sm:h-10 text-lg sm:text-2xl font-semibold text-slate-700 dark:text-slate-300 mb-6 sm:mb-8">
+                        Sebagai <span id="typewriter-text" class="text-red-600 dark:text-red-500 typewriter-cursor border-b-2 border-red-500/30 pb-0.5"></span>
+                    </div>
+
+                    <p class="text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0">
+                        Halo, saya <strong class="text-slate-800 dark:text-slate-200">Dikki Datri Murdoko</strong>. Praktisi K3 (HSE) bersertifikasi dengan latar belakang S1 Teknik Informatika. Menggabungkan standar Keselamatan dan Kesehatan Kerja (K3) yang ketat dengan pendekatan sistematis berbasis data.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start px-4 sm:px-0">
+                        <a href="#reports" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-6 sm:px-8 py-3.5 border border-transparent text-sm sm:text-base font-medium rounded-xl text-white bg-brand-600 hover:bg-brand-700 shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 transform sm:hover:-translate-y-1 transition-all duration-300">
+                            Lihat Dashboard K3
+                            <i class="fa-solid fa-chart-line text-sm"></i>
+                        </a>
+                        <a href="CV Dikki Datri Murdoko 2026.pdf" download="CV_Dikki_Datri_Murdoko.pdf" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-6 sm:px-8 py-3.5 border border-transparent text-sm sm:text-base font-medium rounded-xl text-white bg-red-600 hover:bg-red-700 shadow-lg shadow-red-500/30 hover:shadow-red-500/50 transform sm:hover:-translate-y-1 transition-all duration-300 group">
+                            Unduh CV
+                            <i class="fa-solid fa-download text-sm group-hover:animate-bounce"></i>
+                        </a>
+                    </div>
+
+                    <div class="mt-8 sm:mt-10 flex items-center justify-center lg:justify-start gap-6 text-slate-400 dark:text-slate-500">
+                        <a href="https://www.linkedin.com/in/dikki-datri-murdoko/" target="_blank" class="hover:text-[#0A66C2] dark:hover:text-[#3b82f6] hover:scale-110 transform transition-all duration-300 p-2" title="LinkedIn">
+                            <i class="fa-brands fa-linkedin text-2xl sm:text-3xl"></i>
+                        </a>
+                        <a href="mailto:dikkidatrim@gmail.com" class="hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transform transition-all duration-300 p-2" title="Email">
+                            <i class="fa-solid fa-envelope text-2xl sm:text-3xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/2 flex justify-center items-end relative mt-8 lg:mt-0 reveal-right active px-4 sm:px-0" id="hero-image-container">
+                    <div class="parallax-blob mouse-parallax hidden md:block absolute top-1/2 right-10 w-72 h-72 bg-brand-200 dark:bg-brand-900/40 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-3xl opacity-60 animate-blob -translate-y-1/2" data-speed="-0.05" data-mouse-speed="0.03"></div>
+                    <div class="parallax-blob mouse-parallax hidden md:block absolute top-1/2 left-8 w-64 h-64 bg-red-200 dark:bg-red-900/40 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-3xl opacity-60 animate-blob animation-delay-2000 -translate-y-1/2" data-speed="0.08" data-mouse-speed="-0.04"></div>
+                    
+                    <div class="relative w-full max-w-[280px] sm:max-w-[400px] md:max-w-[450px] lg:max-w-[480px] xl:max-w-[550px] z-10 flex justify-center origin-bottom lg:-ml-4 tilt-card">
+                        <img src="Header.jpg" onerror="this.src='https://placehold.co/400x500/dc2626/ffffff?text=Dikki+Datri+Murdoko'" alt="Dikki Datri Murdoko - HSE Officer" class="w-full h-auto object-contain object-bottom drop-shadow-[0_15px_25px_rgba(0,0,0,0.25)] dark:drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)] pointer-events-none">
+                    </div>
+                    
+                    <div class="absolute -bottom-4 sm:bottom-12 left-2 sm:-left-8 lg:-left-6 xl:-left-16 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm p-3 sm:p-4 rounded-xl shadow-2xl flex items-center gap-3 sm:gap-4 z-20 border border-slate-100 dark:border-slate-700 hover:border-red-200 dark:hover:border-red-500/50 transform scale-90 sm:scale-100 hover:scale-105 transition-all duration-300 tilt-card cursor-default max-w-[90%] sm:max-w-none mx-auto right-2 sm:right-auto">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-red-50 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-500 shrink-0 shadow-inner">
+                            <i class="fa-solid fa-award text-xl sm:text-2xl animate-spin-slow"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider mb-1">Tersertifikasi</p>
+                            <p class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-brand-500"></i> Ahli K3 Umum</p>
+                            <p class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5 mt-0.5 sm:mt-1"><i class="fa-solid fa-fire-extinguisher text-red-500"></i> Pengawas K3 Migas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 md:py-24 bg-white dark:bg-slate-900 relative overflow-hidden transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+                
+                <div class="w-full sm:w-8/12 lg:w-5/12 mx-auto reveal">
+                    <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl bg-slate-100 dark:bg-slate-800 group tilt-card border border-slate-200 dark:border-slate-700">
+                        <img src="Foto.jpg" onerror="this.src='https://placehold.co/600x800/1e293b/ffffff?text=Dikki+HSE+Lapangan'" alt="Dikki Datri Murdoko - HSE di Lapangan" class="w-full h-auto aspect-[3/4] sm:aspect-auto object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
+                            <p class="text-white font-medium text-sm sm:text-lg flex items-center gap-2 transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500 sm:delay-100">
+                                <i class="fa-solid fa-helmet-safety text-red-500"></i> Dokumentasi Pribadi
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-7/12 reveal text-center lg:text-left">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white section-title transition-colors">Profil Saya</h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed mb-4 sm:mb-6 transition-colors text-justify lg:text-left">
+                        Saya merupakan lulusan Teknik Informatika dari IIB Darmajaya yang memiliki ketertarikan kuat dan telah beralih fokus ke bidang <strong>Keselamatan dan Kesehatan Kerja (K3)</strong>. Saya percaya bahwa latar belakang IT memberikan keuntungan unik dalam memahami alur kerja sistematis, manajemen data inspeksi data harian, dan penerapan visualisasi metrik K3 terdigitalisasi.
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed mb-8 transition-colors text-justify lg:text-left">
+                        Saya adalah individu yang mandiri, adaptif di lingkungan baru, dan selalu terbuka terhadap kritik konstruktif. Saya menyukai tantangan teknis lapangan maupun perancangan solusi analitis untuk mitigasi risiko kecelakaan kerja di industri berskala menengah hingga besar.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-left">
+                        <div class="bg-slate-50 dark:bg-slate-800/80 p-5 sm:p-6 rounded-xl border border-slate-100 dark:border-slate-700 hover:border-brand-500/50 hover:shadow-xl dark:hover:bg-slate-800 tilt-card transition-all duration-300 flex sm:block items-center gap-4 sm:gap-0">
+                            <div class="w-12 h-12 rounded-full bg-brand-50 dark:bg-brand-900/30 flex items-center justify-center text-brand-600 dark:text-brand-400 sm:mb-4 shrink-0 transition-colors">
+                                <i class="fa-solid fa-graduation-cap text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-0.5 sm:mb-1 transition-colors">Pendidikan</h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm transition-colors">S1 Teknik Informatika<br>IIB Darmajaya (IPK 3.87)</p>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800/80 p-5 sm:p-6 rounded-xl border border-slate-100 dark:border-slate-700 hover:border-red-500/50 hover:shadow-xl dark:hover:bg-slate-800 tilt-card transition-all duration-300 flex sm:block items-center gap-4 sm:gap-0">
+                            <div class="w-12 h-12 rounded-full bg-red-50 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 sm:mb-4 shrink-0 transition-colors">
+                                <i class="fa-solid fa-map-location-dot text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-0.5 sm:mb-1 transition-colors">Domisili</h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm transition-colors">Lampung Utara,<br>Lampung, Indonesia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-16 md:py-24 bg-slate-50 dark:bg-slate-800/50 relative transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 sm:mb-16 reveal">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white section-title mx-auto transition-colors">Pengalaman Profesional</h2>
+                <p class="mt-2 sm:mt-4 text-slate-600 dark:text-slate-400 text-base sm:text-lg transition-colors">Rekam jejak karir dan proyek yang telah saya tangani.</p>
+            </div>
+
+            <div class="relative border-l-2 border-slate-200 dark:border-slate-700 ml-3 sm:ml-4 md:ml-8 space-y-10 sm:space-y-12 transition-colors">
+                
+                <div class="relative pl-8 sm:pl-10 md:pl-16 group reveal tilt-card-subtle">
+                    <div class="absolute -left-[21px] sm:-left-5 top-1.5 w-10 h-10 rounded-full bg-red-50 dark:bg-slate-900 border-2 border-red-500 flex items-center justify-center text-red-600 dark:text-red-500 group-hover:bg-red-600 dark:group-hover:bg-red-500 group-hover:text-white transition-all duration-300 shadow-md group-hover:shadow-red-500/50 z-10">
+                        <i class="fa-solid fa-helmet-safety text-sm"></i>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-slate-800 p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 group-hover:border-red-200 dark:group-hover:border-red-500/50 group-hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-bl from-red-50 dark:from-red-900/20 to-transparent opacity-50 rounded-bl-full pointer-events-none transition-colors"></div>
+                        
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-3 relative z-10">
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex flex-wrap items-center gap-2 transition-colors">
+                                    HSE Officer 
+                                    <span class="text-[10px] sm:text-xs font-normal py-0.5 px-2 rounded bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 border border-blue-100 dark:border-blue-800/50 flex items-center gap-1">
+                                        <i class="fa-solid fa-droplet text-[8px] sm:text-[10px]"></i> WWTP Project
+                                    </span>
+                                </h3>
+                                <div class="text-brand-600 dark:text-brand-400 font-medium text-sm sm:text-base mt-1 transition-colors">PT. Memiontec Indonesia</div>
+                                <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 transition-colors">Project WWTP PT. Sumber Indah Perkasa | Lampung Selatan</div>
+                            </div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] sm:text-xs font-semibold bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-400 whitespace-nowrap self-start border border-red-100 dark:border-red-800/50 transition-colors">
+                                <i class="fa-regular fa-calendar-days mr-1.5"></i> Mei 2026 - Juli 2026
+                            </span>
+                        </div>
+                        <ul class="space-y-2 text-slate-600 dark:text-slate-400 text-xs sm:text-sm list-none relative z-10 transition-colors">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-red-400 dark:text-red-500 mt-0.5 sm:mt-1 flex-shrink-0 text-[10px]"></i><span>Menerapkan dan memantau program K3 & lingkungan sesuai regulasi.</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-red-400 dark:text-red-500 mt-0.5 sm:mt-1 flex-shrink-0 text-[10px]"></i><span>Melakukan identifikasi bahaya, penilaian risiko, dan pengendalian (HIRADC/HIRARC).</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-red-400 dark:text-red-500 mt-0.5 sm:mt-1 flex-shrink-0 text-[10px]"></i><span>Mengimplementasi prosedur kerja aman (SOP, JSA, Permit to Work).</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-red-400 dark:text-red-500 mt-0.5 sm:mt-1 flex-shrink-0 text-[10px]"></i><span>Melakukan inspeksi rutin, safety patrol, dan audit internal.</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-red-400 dark:text-red-500 mt-0.5 sm:mt-1 flex-shrink-0 text-[10px]"></i><span>Memfasilitasi safety induction, toolbox meeting, dan pelatihan K3.</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 sm:pl-10 md:pl-16 group reveal tilt-card-subtle">
+                    <div class="absolute -left-[21px] sm:-left-5 top-1.5 w-10 h-10 rounded-full bg-amber-50 dark:bg-slate-900 border-2 border-amber-500 flex items-center justify-center text-amber-600 dark:text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition-all duration-300 shadow-md group-hover:shadow-amber-500/50 z-10">
+                        <i class="fa-solid fa-solar-panel text-sm"></i>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-slate-800 p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 group-hover:border-amber-200 dark:group-hover:border-amber-500/50 group-hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-bl from-amber-50 dark:from-amber-900/20 to-transparent opacity-50 rounded-bl-full pointer-events-none transition-colors"></div>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-3 relative z-10">
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex flex-wrap items-center gap-2 transition-colors">
+                                    HSE Officer
+                                    <span class="text-[10px] sm:text-xs font-normal py-0.5 px-2 rounded bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border border-amber-100 dark:border-amber-800/50 flex items-center gap-1">
+                                        <i class="fa-solid fa-sun text-[8px] sm:text-[10px] animate-spin-slow"></i> PLTS On-Grid
+                                    </span>
+                                </h3>
+                                <div class="text-brand-600 dark:text-brand-400 font-medium text-sm sm:text-base mt-1 transition-colors">PT. Rante Mainta Service</div>
+                                <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 transition-colors">Project PLTS Atap on Grid PT. Transportasi Gas Indonesia | Jambi</div>
+                            </div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] sm:text-xs font-semibold bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 whitespace-nowrap self-start border border-amber-100 dark:border-amber-800/50 transition-colors">
+                                <i class="fa-regular fa-calendar-days mr-1.5"></i> Nov 2025 - Feb 2026
+                            </span>
+                        </div>
+                        <ul class="space-y-2 text-slate-600 dark:text-slate-400 text-xs sm:text-sm list-none relative z-10 transition-colors">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-amber-500 mt-0.5 sm:mt-1 flex-shrink-0 text-[10px]"></i><span>Pengawasan keselamatan kerja dan kepatuhan pekerja di lokasi proyek.</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-amber-500 mt-0.5 sm:mt-1 flex-shrink-0 text-[10px]"></i><span>Implementasi inspeksi K3, pengendalian resiko, dan pelaporan kinerja.</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-amber-500 mt-0.5 sm:mt-1 flex-shrink-0 text-[10px]"></i><span>Pengawasan perkuatan atap di RO1 & GTM Jambi serta stasiun Tempino.</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 sm:pl-10 md:pl-16 group reveal">
+                    <div class="absolute -left-[21px] sm:-left-5 top-1.5 w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-900 border-2 border-slate-400 dark:border-slate-600 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:bg-slate-500 dark:group-hover:bg-slate-600 group-hover:text-white transition-all duration-300 shadow-md z-10">
+                        <i class="fa-solid fa-laptop-code text-sm"></i>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-slate-800 p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 group-hover:border-slate-300 dark:group-hover:border-slate-600 group-hover:shadow-xl transition-all duration-300">
+                        <h4 class="text-xs sm:text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-4 border-b border-slate-100 dark:border-slate-700 pb-2 flex items-center gap-1.5 transition-colors">
+                            <i class="fa-solid fa-network-wired"></i> Pengalaman Lainnya
+                        </h4>
+                        
+                        <div class="space-y-3 sm:space-y-4">
+                            <div class="hover:bg-slate-50 dark:hover:bg-slate-700/50 p-2 sm:p-3 -mx-2 sm:-mx-3 rounded-xl transition-all duration-200">
+                                <div class="flex flex-col sm:flex-row sm:justify-between items-start gap-1">
+                                    <h3 class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-200 transition-colors">Digital Marketing <span class="block sm:inline font-normal text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-0.5 sm:mt-0">| PT. Astra Honda Motor</span></h3>
+                                    <span class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded transition-colors self-start sm:self-auto">Nov '23 - Jan '24</span>
+                                </div>
+                            </div>
+                            
+                            <div class="hover:bg-slate-50 dark:hover:bg-slate-700/50 p-2 sm:p-3 -mx-2 sm:-mx-3 rounded-xl transition-all duration-200">
+                                <div class="flex flex-col sm:flex-row sm:justify-between items-start gap-1">
+                                    <h3 class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-200 transition-colors">Direct Sales <span class="block sm:inline font-normal text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-0.5 sm:mt-0">| PT. PMUI (XL Home)</span></h3>
+                                    <span class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded transition-colors self-start sm:self-auto">Agu '23 - Okt '23</span>
+                                </div>
+                            </div>
+
+                            <div class="hover:bg-slate-50 dark:hover:bg-slate-700/50 p-2 sm:p-3 -mx-2 sm:-mx-3 rounded-xl transition-all duration-200">
+                                <div class="flex flex-col sm:flex-row sm:justify-between items-start gap-1">
+                                    <h3 class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-200 transition-colors">Backend Engineer <span class="block sm:inline font-normal text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-0.5 sm:mt-0">| GoTo Generasi GIGIH</span></h3>
+                                    <span class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded transition-colors self-start sm:self-auto">Feb '22 - Jul '22</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-16 md:py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 sm:mb-16 reveal">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white section-title mx-auto transition-colors">Galeri Kegiatan</h2>
+                <p class="mt-2 sm:mt-4 text-slate-600 dark:text-slate-400 text-base sm:text-lg transition-colors px-2">Dokumentasi pelaksanaan program K3 dan inspeksi keselamatan langsung di lapangan.</p>
+            </div>
+
+            <!-- Stacks 1 column on mobile, 2 on tablet, 3 on desktop -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                <!-- Dok 1 -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 h-56 sm:h-64 reveal tilt-card-subtle border border-transparent hover:border-red-200 dark:border-slate-800 dark:hover:border-red-500/50 bg-slate-100 dark:bg-slate-800">
+                    <img src="Dok7.jpeg" onerror="this.src='https://placehold.co/600x400/0f172a/ffffff?text=Inspeksi+APAR'" alt="Inspeksi APAR" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 sm:p-6">
+                        <p class="text-white font-semibold text-base sm:text-lg flex items-center gap-1.5 transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500"><i class="fa-solid fa-fire-extinguisher text-red-500"></i> Inspeksi APAR</p>
+                        <p class="text-slate-300 text-xs sm:text-sm transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500 sm:delay-75 mt-1 sm:mt-0">Pengecekan berkala kesiapan tabung proteksi kebakaran di lokasi.</p>
+                    </div>
+                </div>
+
+                <!-- Dok 2 -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 h-56 sm:h-64 reveal tilt-card-subtle border border-transparent hover:border-red-200 dark:border-slate-800 dark:hover:border-red-500/50 bg-slate-100 dark:bg-slate-800" style="transition-delay: 100ms;">
+                    <img src="Dok1.jpeg" onerror="this.src='https://placehold.co/600x400/0f172a/ffffff?text=Toolbox+Meeting'" alt="Toolbox Meeting" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 sm:p-6">
+                        <p class="text-white font-semibold text-base sm:text-lg flex items-center gap-1.5 transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500"><i class="fa-solid fa-users text-brand-400"></i> Toolbox Meeting</p>
+                        <p class="text-slate-300 text-xs sm:text-sm transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500 sm:delay-75 mt-1 sm:mt-0">Pengarahan ringkas mengenai bahaya pekerjaan harian sebelum dimulai.</p>
+                    </div>
+                </div>
+
+                <!-- Dok 3 -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 h-56 sm:h-64 reveal tilt-card-subtle border border-transparent hover:border-red-200 dark:border-slate-800 dark:hover:border-red-500/50 bg-slate-100 dark:bg-slate-800" style="transition-delay: 200ms;">
+                    <img src="Dok3.jpeg" onerror="this.src='https://placehold.co/600x400/0f172a/ffffff?text=Safety+Briefing'" alt="Safety Briefing Area Terbuka" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 sm:p-6">
+                        <p class="text-white font-semibold text-base sm:text-lg flex items-center gap-1.5 transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500"><i class="fa-solid fa-bullhorn text-amber-400"></i> Safety Briefing Weekly</p>
+                        <p class="text-slate-300 text-xs sm:text-sm transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500 sm:delay-75 mt-1 sm:mt-0">Koordinasi K3 krusial di wilayah kerja konstruksi berat.</p>
+                    </div>
+                </div>
+                
+                <!-- Dok 4 -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 h-56 sm:h-64 reveal tilt-card-subtle border border-transparent hover:border-red-200 dark:border-slate-800 dark:hover:border-red-500/50 bg-slate-100 dark:bg-slate-800">
+                    <img src="Dok2.jpeg" onerror="this.src='https://placehold.co/600x400/0f172a/ffffff?text=Pengawasan+APD'" alt="Pengawasan APD" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 sm:p-6">
+                        <p class="text-white font-semibold text-base sm:text-lg flex items-center gap-1.5 transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500"><i class="fa-solid fa-hard-hat text-brand-400"></i> General Safety Talk</p>
+                        <p class="text-slate-300 text-xs sm:text-sm transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500 sm:delay-75 mt-1 sm:mt-0">Rutinitas bulanan untuk membangun budaya saling peduli dan mencegah kecelakaan kerja.</p>
+                    </div>
+                </div>
+
+                <!-- Dok 5 -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 h-56 sm:h-64 reveal tilt-card-subtle border border-transparent hover:border-red-200 dark:border-slate-800 dark:hover:border-red-500/50 bg-slate-100 dark:bg-slate-800" style="transition-delay: 100ms;">
+                    <img src="Dok6.jpeg" onerror="this.src='https://placehold.co/600x400/0f172a/ffffff?text=Safety+Induction'" alt="Safety Induction" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 sm:p-6">
+                        <p class="text-white font-semibold text-base sm:text-lg flex items-center gap-1.5 transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500"><i class="fa-solid fa-person-chalkboard text-amber-400"></i> Safety Induction & Talk</p>
+                        <p class="text-slate-300 text-xs sm:text-sm transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500 sm:delay-75 mt-1 sm:mt-0">Memberikan orientasi keselamatan bagi pekerja baru atau tamu area proyek.</p>
+                    </div>
+                </div>
+
+                <!-- Dok 6 -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 h-56 sm:h-64 reveal tilt-card-subtle border border-transparent hover:border-red-200 dark:border-slate-800 dark:hover:border-red-500/50 bg-slate-100 dark:bg-slate-800" style="transition-delay: 200ms;">
+                    <img src="Dok5.jpeg" onerror="this.src='https://placehold.co/600x400/0f172a/ffffff?text=Audit+Internal'" alt="Audit Internal" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 sm:p-6">
+                        <p class="text-white font-semibold text-base sm:text-lg flex items-center gap-1.5 transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500"><i class="fa-solid fa-clipboard-check text-brand-400"></i> Audit Internal K3</p>
+                        <p class="text-slate-300 text-xs sm:text-sm transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500 sm:delay-75 mt-1 sm:mt-0">Melakukan pengecekan kepatuhan sistem dan administrasi HSE di lapangan.</p>
+                    </div>
+                </div>
+
+                <!-- Dok 7 (Baru: Lap8.jpeg) -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 h-56 sm:h-64 reveal tilt-card-subtle border border-transparent hover:border-red-200 dark:border-slate-800 dark:hover:border-red-500/50 bg-slate-100 dark:bg-slate-800">
+                    <img src="Dok8.jpeg" onerror="this.src='https://placehold.co/600x400/0f172a/ffffff?text=Area+PLTS'" alt="Inspeksi Area PLTS" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 sm:p-6">
+                        <p class="text-white font-semibold text-base sm:text-lg flex items-center gap-1.5 transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500"><i class="fa-solid fa-solar-panel text-brand-400"></i>Hasil Pemantauan Udara PLTS</p>
+                        <p class="text-slate-300 text-xs sm:text-sm transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500 sm:delay-75 mt-1 sm:mt-0">Pemantauan visual area instalasi panel surya untuk memastikan keamanan tata letak.</p>
+                    </div>
+                </div>
+
+                <!-- Dok 8 (Baru: Lap9.jpg) -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 h-56 sm:h-64 reveal tilt-card-subtle border border-transparent hover:border-red-200 dark:border-slate-800 dark:hover:border-red-500/50 bg-slate-100 dark:bg-slate-800" style="transition-delay: 100ms;">
+                    <img src="Dok9.jpeg" onerror="this.src='https://placehold.co/600x400/0f172a/ffffff?text=Pengawasan+PLTS'" alt="Pengawasan Proyek PLTS" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 sm:p-6">
+                        <p class="text-white font-semibold text-base sm:text-lg flex items-center gap-1.5 transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500"><i class="fa-solid fa-hard-hat text-amber-400"></i> Dokumentasi Pribadi</p>
+                        <p class="text-slate-300 text-xs sm:text-sm transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500 sm:delay-75 mt-1 sm:mt-0">Dokumentasi pribadi proyek PLTS Atap On-Grid Tempino, Jambi.&nbsp;</p>
+                    </div>
+                </div>
+
+                <!-- Dok 9 (Standard size) -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 h-56 sm:h-64 reveal tilt-card-subtle border border-transparent hover:border-red-200 dark:border-slate-800 dark:hover:border-red-500/50 bg-slate-100 dark:bg-slate-800" style="transition-delay: 200ms;">
+                    <img src="Dok4.jpeg" onerror="this.src='https://placehold.co/600x400/0f172a/ffffff?text=Presentasi+Kinerja'" alt="Presentasi Kinerja HSE" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 sm:p-6">
+                        <p class="text-white font-semibold text-base sm:text-lg flex items-center gap-1.5 transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500"><i class="fa-solid fa-chart-column text-brand-400"></i> Presentasi Kinerja HSE</p>
+                        <p class="text-slate-300 text-xs sm:text-sm transform sm:translate-y-4 group-hover:translate-y-0 transition-transform duration-500 sm:delay-75 mt-1 sm:mt-0">Pemaparan statistik program K3 bulanan kepada jajaran manajemen secara komprehensif.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="reports" class="py-16 md:py-24 bg-slate-900 dark:bg-slate-950 text-white relative overflow-hidden transition-colors duration-300">
+        <div class="absolute top-1/2 left-0 w-64 md:w-96 h-64 md:h-96 bg-brand-600 opacity-10 blur-[100px] rounded-full pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-64 md:w-96 h-64 md:h-96 bg-red-600 opacity-10 blur-[100px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-10 sm:mb-16 reveal px-2">
+                <span class="px-3 sm:px-4 py-1 sm:py-1.5 bg-brand-500/10 text-brand-400 text-[10px] sm:text-xs font-semibold uppercase tracking-wider rounded-full border border-brand-500/30">Data & Analisis Digital</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold mt-3 sm:mt-4 leading-tight">Sistem Pelaporan & Analitis K3</h2>
+                <div class="w-16 sm:w-24 h-1 bg-gradient-to-r from-red-600 to-brand-500 mx-auto rounded-full mt-4 mb-4 sm:mb-6"></div>
+                <p class="max-w-2xl mx-auto text-slate-300 text-sm sm:text-base leading-relaxed">
+                    Menggabungkan kemampuan <strong class="text-brand-400 font-semibold">Teknik Informatika</strong> dalam visualisasi bagan dengan standar manajemen <strong class="text-red-500 font-semibold">K3 (HSE)</strong> yang mutakhir.
+                </p>
+            </div>
+
+            <div class="bg-slate-800/40 dark:bg-slate-900/60 rounded-2xl sm:rounded-3xl p-3 sm:p-6 lg:p-8 border border-slate-700/60 dark:border-slate-800 shadow-2xl backdrop-blur-sm reveal">
+                <div class="flex flex-col lg:flex-row gap-6 lg:gap-8">
+                    
+                    <!-- Navigation Tabs -->
+                    <div class="w-full lg:w-4/12 flex flex-col gap-2 sm:gap-3 shrink-0">
+                        <p class="text-slate-400 text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-1 sm:mb-2 px-2">Daftar Dokumen Analisis</p>
+                        
+                        <button onclick="switchReport(1)" id="tab-1" class="report-tab-btn active w-full text-left p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-brand-600 text-white border border-brand-500/30 shadow-lg shadow-brand-900/50 transition-all duration-300 flex items-center gap-3 sm:gap-4 hover:scale-[1.02] transform cursor-pointer">
+                            <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-white/20 flex items-center justify-center text-lg sm:text-xl shrink-0 backdrop-blur-sm"><i class="fa-solid fa-clock"></i></div>
+                            <div>
+                                <h4 class="font-bold text-xs sm:text-sm md:text-base leading-tight">Distribusi Jam Kerja Aman Mingguan</h4>
+                                <p class="text-[10px] sm:text-xs text-brand-100 mt-0.5">Analisis Harian, Zero Accident</p>
+                            </div>
+                        </button>
+
+                        <button onclick="switchReport(2)" id="tab-2" class="report-tab-btn w-full text-left p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-800/60 text-slate-300 border border-slate-700 hover:bg-slate-700 hover:border-slate-500 transition-all duration-300 flex items-center gap-3 sm:gap-4 hover:scale-[1.02] transform cursor-pointer">
+                            <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-slate-700 flex items-center justify-center text-lg sm:text-xl shrink-0"><i class="fa-solid fa-chart-column"></i></div>
+                            <div>
+                                <h4 class="font-bold text-xs sm:text-sm md:text-base leading-tight">Integrasi Jam Kerja Proyek Bulanan</h4>
+                                <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">Akumulasi Manhours Mingguan</p>
+                            </div>
+                        </button>
+                        
+                        <button onclick="switchReport(3)" id="tab-3" class="report-tab-btn w-full text-left p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-800/60 text-slate-300 border border-slate-700 hover:bg-slate-700 hover:border-slate-500 transition-all duration-300 flex items-center gap-3 sm:gap-4 hover:scale-[1.02] transform cursor-pointer">
+                            <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-slate-700 flex items-center justify-center text-lg sm:text-xl shrink-0"><i class="fa-solid fa-list-check"></i></div>
+                            <div>
+                                <h4 class="font-bold text-xs sm:text-sm md:text-base leading-tight">KPI Leading & Lagging</h4>
+                                <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">Matriks Target dan Capaian di Lapangan</p>
+                            </div>
+                        </button>
+
+                        <button onclick="switchReport(4)" id="tab-4" class="report-tab-btn w-full text-left p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-800/60 text-slate-300 border border-slate-700 hover:bg-slate-700 hover:border-slate-500 transition-all duration-300 flex items-center gap-3 sm:gap-4 hover:scale-[1.02] transform cursor-pointer">
+                            <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-slate-700 flex items-center justify-center text-lg sm:text-xl shrink-0"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                            <div>
+                                <h4 class="font-bold text-xs sm:text-sm md:text-base leading-tight">Analisis Tren K3 Bulanan</h4>
+                                <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">Manpower dan Staff, Grafik S-Curve Manhours</p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="w-full lg:w-8/12 flex flex-col bg-slate-900/80 dark:bg-slate-950/80 rounded-xl sm:rounded-2xl p-3 sm:p-6 border border-slate-700/50 shadow-inner">
+                        
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-3 sm:pb-4 mb-3 sm:mb-4">
+                            <div class="flex items-center gap-2 overflow-hidden">
+                                <span class="flex h-2 w-2 sm:h-3 sm:w-3 relative shrink-0">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2 w-2 sm:h-3 sm:w-3 bg-red-500"></span>
+                                </span>
+                                <span class="text-[10px] sm:text-xs font-mono text-slate-400 truncate" id="viewer-path"><i class="fa-solid fa-folder-open mr-1"></i>&nbsp;W5_Weekly_Report_Juni.xlsx</span>
+                            </div>
+                            <div class="hidden sm:flex gap-1.5 shrink-0">
+                                <span class="w-3 h-3 rounded-full bg-slate-700 border border-slate-600"></span>
+                                <span class="w-3 h-3 rounded-full bg-slate-700 border border-slate-600"></span>
+                                <span class="w-3 h-3 rounded-full bg-slate-700 border border-slate-600"></span>
+                            </div>
+                        </div>
+
+                        <div class="relative bg-slate-950 rounded-lg sm:rounded-xl overflow-hidden aspect-[4/3] sm:aspect-video border border-slate-800 flex items-center justify-center group mb-4 sm:mb-6 shadow-2xl cursor-pointer" onclick="openLightbox()">
+                            <img id="viewer-img-1" src="Lap4.jpg" onerror="this.src='https://placehold.co/1200x600/020617/ffffff?text=Laporan+1'" alt="Distribusi Jam Kerja" class="viewer-img w-full h-full object-contain object-center transition-all duration-700 scale-100 group-hover:scale-105">
+                            <img id="viewer-img-2" src="Lap3.jpg" onerror="this.src='https://placehold.co/1200x600/020617/ffffff?text=Laporan+2'" alt="Integrasi Jam Kerja" class="viewer-img w-full h-full object-contain object-center hidden transition-all duration-700 scale-100 group-hover:scale-105">
+                            <img id="viewer-img-3" src="Lap2.jpg" onerror="this.src='https://placehold.co/1200x600/020617/ffffff?text=Laporan+3'" alt="Matriks Indikator" class="viewer-img w-full h-full object-contain object-center hidden transition-all duration-700 scale-100 group-hover:scale-105">
+                            <img id="viewer-img-4" src="Lap1.jpg" onerror="this.src='https://placehold.co/1200x600/020617/ffffff?text=Laporan+4'" alt="Analisis Tren" class="viewer-img w-full h-full object-contain object-center hidden transition-all duration-700 scale-100 group-hover:scale-105">
+                            
+                            <button class="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 bg-black/60 hover:bg-brand-600 backdrop-blur text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold flex items-center gap-1.5 sm:gap-2 transition-all shadow-lg border border-slate-700/50 hover:border-brand-500">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i> <span class="hidden xs:inline">Perbesar</span>
+                            </button>
+                        </div>
+
+                        <div class="border-t border-slate-800 pt-4 sm:pt-5">
+                            <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2 leading-tight" id="report-title">
+                                <i class="fa-solid fa-file-invoice text-red-400"></i> Visualisasi Distribusi Jam Kerja Aman Harian
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed" id="report-desc">
+                                Laporan ini mendokumentasikan total jam kerja aman harian bersih pada minggu berjalan, memisahkan secara presisi antara Jam Kerja Normal dan Jam Kerja Lembur (OT) untuk memantau status kelelahan pekerja sekaligus memelihara rekor Zero Accident.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="py-16 md:py-24 bg-slate-50 dark:bg-slate-800/50 relative overflow-hidden transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 sm:mb-16 reveal">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white section-title mx-auto transition-colors">Lisensi & Sertifikasi</h2>
+                <p class="mt-2 sm:mt-4 text-slate-600 dark:text-slate-400 text-base sm:text-lg transition-colors px-2">Kompetensi yang diakui secara resmi untuk menjamin keselamatan kerja industri.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+                <!-- Cert 1 -->
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-brand-400 dark:hover:border-brand-500/50 shadow-sm hover:shadow-xl transition-all duration-300 group reveal tilt-card items-center sm:items-start text-center sm:text-left">
+                    <div class="flex-shrink-0">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-brand-50 dark:bg-slate-900 flex items-center justify-center text-brand-600 dark:text-brand-500 group-hover:bg-brand-600 dark:group-hover:bg-brand-500 group-hover:text-white transition-colors duration-300 shadow-sm border border-transparent dark:border-brand-500/30">
+                            <i class="fa-solid fa-shield-halved text-2xl sm:text-3xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1 group-hover:text-brand-700 dark:group-hover:text-brand-400 transition-colors">Ahli K3 Umum Kemnaker RI</h3>
+                        <p class="text-brand-600 dark:text-brand-400 text-xs sm:text-sm font-medium mb-3 flex items-center justify-center sm:justify-start gap-1.5 transition-colors"><i class="fa-solid fa-certificate"></i> PJK3 Mutiara Mutu Sertifikasi | Des 2024</p>
+                        <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 space-y-1.5 list-none transition-colors text-left">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-400 dark:text-brand-500 mt-0.5 sm:mt-1 shrink-0"></i> <span>Regulasi perundang-undangan (UU No. 01 Th 1970).</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-400 dark:text-brand-500 mt-0.5 sm:mt-1 shrink-0"></i> <span>Pemahaman SMK3, PUBT, PAA, TKBT.</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-400 dark:text-brand-500 mt-0.5 sm:mt-1 shrink-0"></i> <span>Praktik HIRADC, JSA, dan sistem manajemen K3.</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-red-400 dark:hover:border-red-500/50 shadow-sm hover:shadow-xl transition-all duration-300 group reveal tilt-card items-center sm:items-start text-center sm:text-left">
+                    <div class="flex-shrink-0">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-red-50 dark:bg-slate-900 flex items-center justify-center text-red-500 group-hover:bg-red-500 group-hover:text-white transition-colors duration-300 shadow-sm border border-transparent dark:border-red-500/30">
+                            <i class="fa-solid fa-fire-extinguisher text-2xl sm:text-3xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1 group-hover:text-red-700 dark:group-hover:text-red-400 transition-colors">Pengawas K3 Migas (BNSP)</h3>
+                        <p class="text-red-600 dark:text-red-400 text-xs sm:text-sm font-medium mb-3 flex items-center justify-center sm:justify-start gap-1.5 transition-colors"><i class="fa-solid fa-certificate"></i> PJK3 Aliem Institute | Juni 2026</p>
+                        <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 space-y-1.5 list-none transition-colors text-left">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-red-400 dark:text-red-500 mt-0.5 sm:mt-1 shrink-0"></i> <span>Perencanaan penanggulangan tanggap darurat.</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-red-400 dark:text-red-500 mt-0.5 sm:mt-1 shrink-0"></i> <span>Taktik pemadaman & pengendalian gas beracun.</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-red-400 dark:text-red-500 mt-0.5 sm:mt-1 shrink-0"></i> <span>Pelaporan insiden & pelaksanaan audit internal.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 text-slate-400 py-12 sm:py-16 border-t border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 mb-10 sm:mb-12 border-b border-slate-800 pb-10 sm:pb-12">
+                
+                <div class="space-y-4 sm:space-y-6 lg:col-span-1 sm:col-span-2 lg:col-span-1">
+                    <div class="flex items-center gap-3 cursor-pointer group w-max" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-red-600 transition-colors shadow-lg">
+                            <i class="fa-solid fa-helmet-safety text-red-500 text-xl group-hover:text-white transition-colors"></i>
+                        </div>
+                        <span class="font-bold text-xl text-slate-200">Dikki D. Murdoko</span>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed pr-4">
+                        Praktisi K3 bersertifikasi dengan kemampuan analitik dan IT untuk menciptakan lingkungan kerja yang aman dan produktif.
+                    </p>
+                    <div class="flex flex-col gap-3">
+                        <a href="mailto:dikkidatrim@gmail.com" class="hover:text-white transition-colors flex items-center gap-3 text-sm w-max">
+                            <i class="fa-solid fa-envelope w-4 text-center"></i> dikkidatrim@gmail.com
+                        </a>
+                        <a href="tel:+6281273353118" class="hover:text-white transition-colors flex items-center gap-3 text-sm w-max">
+                            <i class="fa-solid fa-phone w-4 text-center"></i> +62 812-7335-3118
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-slate-200 font-bold text-lg mb-4 sm:mb-6 flex items-center gap-2"><i class="fa-solid fa-screwdriver-wrench text-brand-500"></i> Hard Skills</h3>
+                    <ul class="space-y-2.5 sm:space-y-3 text-sm">
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-500 mt-1 text-[10px]"></i> <span>HIRADC, IBPR &amp; JSA</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-500 mt-1 text-[10px]"></i> <span>Audit & Inspeksi K3</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-500 mt-1 text-[10px]"></i> <span>Regulasi K3 (UU No. 1/1970)</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-500 mt-1 text-[10px]"></i> <span>Tanggap Darurat Migas</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-500 mt-1 text-[10px]"></i> <span>Pembuatan Flowchart Diagram</span></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-slate-200 font-bold text-lg mb-4 sm:mb-6 flex items-center gap-2"><i class="fa-solid fa-people-group text-accent-500"></i> Soft Skills</h3>
+                    <ul class="space-y-2.5 sm:space-y-3 text-sm">
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-accent-500 mt-1 text-[10px]"></i> <span>Kepemimpinan & Kerja Tim</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-accent-500 mt-1 text-[10px]"></i> <span>Problem Solving</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-accent-500 mt-1 text-[10px]"></i> <span>Berpikir Kritis & Kreatif</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-accent-500 mt-1 text-[10px]"></i> <span>Manajemen Waktu &amp; SDM</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-accent-500 mt-1 text-[10px]"></i> <span>Komunikasi</span></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-slate-200 font-bold text-lg mb-4 sm:mb-6 flex items-center gap-2"><i class="fa-solid fa-laptop-code text-blue-500"></i> Software & IT</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 sm:px-3 sm:py-1.5 bg-slate-800 text-slate-300 text-[10px] sm:text-xs rounded-lg border border-slate-700">Microsoft Office</span>
+                        <span class="px-2.5 py-1 sm:px-3 sm:py-1.5 bg-slate-800 text-slate-300 text-[10px] sm:text-xs rounded-lg border border-slate-700">ERP & Jira</span>
+                        <span class="px-2.5 py-1 sm:px-3 sm:py-1.5 bg-slate-800 text-slate-300 text-[10px] sm:text-xs rounded-lg border border-slate-700">Python & PHP</span>
+                        <span class="px-2.5 py-1 sm:px-3 sm:py-1.5 bg-slate-800 text-slate-300 text-[10px] sm:text-xs rounded-lg border border-slate-700">HTML & CSS</span>
+                        <span class="px-2.5 py-1 sm:px-3 sm:py-1.5 bg-slate-800 text-slate-300 text-[10px] sm:text-xs rounded-lg border border-slate-700">MySQL Database</span>
+                        <span class="px-2.5 py-1 sm:px-3 sm:py-1.5 bg-slate-800 text-slate-300 text-[10px] sm:text-xs rounded-lg border border-slate-700">Canva & Photoshop</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="flex flex-col-reverse sm:flex-row justify-between items-center gap-4 text-xs sm:text-sm text-slate-500">
+                <p class="text-center sm:text-left">&copy; <span id="year"></span> Dikki Datri Murdoko. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a href="https://www.linkedin.com/in/dikki-datri-murdoko/" target="_blank" class="hover:text-white transition-colors p-2 sm:p-0" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="lightbox" class="fixed inset-0 bg-slate-950/95 z-[100] hidden flex flex-col items-center justify-center p-2 sm:p-4 backdrop-blur-md transition-opacity duration-300">
+        <button onclick="closeLightbox()" class="absolute top-2 right-2 sm:top-4 sm:right-4 bg-slate-800/80 hover:bg-red-600 text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all z-50 cursor-pointer">
+            <i class="fa-solid fa-xmark text-lg sm:text-xl"></i>
+        </button>
+
+        <div class="relative w-full max-w-5xl h-auto max-h-[85vh] flex items-center justify-center">
+            <img id="lightbox-img" src="Lap1_2.jpg" alt="Laporan Pratinjau Detil" class="w-full h-auto max-h-[75vh] sm:max-h-[80vh] object-contain rounded-lg shadow-2xl border border-slate-800">
+        </div>
+        <p id="lightbox-caption" class="text-slate-200 mt-4 sm:mt-6 text-center font-bold text-base sm:text-xl max-w-2xl px-4"></p>
+    </div>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleIcon = document.getElementById('theme-toggle-icon');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const themeToggleIconMobile = document.getElementById('theme-toggle-icon-mobile');
+        
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            if(themeToggleIcon) themeToggleIcon.classList.replace('fa-moon', 'fa-sun');
+            if(themeToggleIconMobile) themeToggleIconMobile.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            document.documentElement.classList.remove('dark');
+            if(themeToggleIcon) themeToggleIcon.classList.replace('fa-sun', 'fa-moon');
+            if(themeToggleIconMobile) themeToggleIconMobile.classList.replace('fa-sun', 'fa-moon');
+        }
+
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.theme = isDark ? 'dark' : 'light';
+            
+            const fromIcon = isDark ? 'fa-moon' : 'fa-sun';
+            const toIcon = isDark ? 'fa-sun' : 'fa-moon';
+            
+            if(themeToggleIcon) themeToggleIcon.classList.replace(fromIcon, toIcon);
+            if(themeToggleIconMobile) themeToggleIconMobile.classList.replace(fromIcon, toIcon);
+        }
+
+        if(themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+        if(themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
+
+        if (window.innerWidth >= 768) {
+            const tiltCards = document.querySelectorAll('.tilt-card, .tilt-card-subtle');
+            tiltCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const multiplier = card.classList.contains('tilt-card-subtle') ? 5 : 15;
+                    const xRotate = multiplier * ((x - rect.width / 2) / rect.width);
+                    const yRotate = -multiplier * ((y - rect.height / 2) / rect.height);
+                    card.style.transform = `perspective(1000px) rotateX(${yRotate}deg) rotateY(${xRotate}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                });
+            });
+        }
+
+        if (window.innerWidth >= 768) {
+            const parallaxElements = document.querySelectorAll('.mouse-parallax');
+            const heroSection = document.getElementById('home');
+            
+            if(heroSection) {
+                heroSection.addEventListener('mousemove', (e) => {
+                    const x = (window.innerWidth - e.pageX * 2) / 100;
+                    const y = (window.innerHeight - e.pageY * 2) / 100;
+                    parallaxElements.forEach(el => {
+                        const speed = el.getAttribute('data-mouse-speed') || 0.05;
+                        const currentY = parseFloat(el.style.transform.replace(/[^0-9\-.,]/g, '').split(',')[1]) || 0;
+                        el.style.transform = `translateX(${x * speed * 100}px) translateY(calc(-50% + ${currentY}px + ${y * speed * 100}px))`;
+                    });
+                });
+            }
+        }
+
+        const scrollIndicator = document.getElementById('scroll-indicator');
+        const backToTopBtn = document.getElementById('back-to-top');
+        const nav = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolledPercentage = (winScroll / height) * 100;
+            
+            if(scrollIndicator) scrollIndicator.style.width = scrolledPercentage + "%";
+
+            if (window.scrollY > 10) {
+                if(nav) nav.classList.add('shadow-lg');
+            } else {
+                if(nav) nav.classList.remove('shadow-lg');
+            }
+
+            if (window.scrollY > 400) {
+                if(backToTopBtn) {
+                    backToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                    backToTopBtn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                }
+            } else {
+                if(backToTopBtn) {
+                    backToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                    backToTopBtn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                }
+            }
+        });
+
+        const observerOptions = { root: null, threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        const typewriterWords = ["HSE Officer", "Ahli K3 Umum Kemnaker RI", "Pengawas K3 Migas", "Safety Data Analyst"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterTextElement = document.getElementById('typewriter-text');
+
+        function type() {
+            if(!typewriterTextElement) return;
+            const currentWord = typewriterWords[wordIndex];
+            if (isDeleting) {
+                typewriterTextElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterTextElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 1500;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % typewriterWords.length;
+                typeSpeed = 500;
+            }
+            setTimeout(type, typeSpeed);
+        }
+        setTimeout(type, 800);
+
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = btn ? btn.querySelector('i') : null;
+        
+        if(btn && menu && icon) {
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                if(menu.classList.contains('hidden')){
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                }
+            });
+            
+            const mobileLinks = menu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                });
+            });
+        }
+
+        let activeReportIndex = 1;
+        const reportData = {
+            1: {
+                title: "Visualisasi Distribusi Jam Kerja Aman Harian",
+                desc: "Laporan mendokumentasikan total jam kerja aman harian bersih pada minggu berjalan, memisahkan secara presisi antara Jam Kerja Normal dan Lembur (OT) untuk memantau status kelelahan pekerja sekaligus memelihara rekor Zero Accident.",
+                path: "DOKUMEN_LAPORAN_01.pdf",
+                imgSrc: "Lap1_2.jpg"
+            },
+            2: {
+                title: "Analisis Tren Integrasi Jam Kerja Mingguan",
+                desc: "Grafik ini mengintegrasikan distribusi jam kerja mingguan dalam lima minggu proyek dengan total 3.255 jam kerja aman terkumpul tanpa LTI.",
+                path: "Monthly_Manhours_Report.xlsx",
+                imgSrc: "Lap2_2.jpg"
+            },
+            3: {
+                title: "Matriks Indikator Kinerja K3 (Leading & Lagging)",
+                desc: "Menyandingkan metrik Lagging (reaktif) dengan target Leading (proaktif). Seluruh parameter berada dalam status hijau/aman terpenuhi.",
+                path: "HSE_Performance_Metrics.xlsx",
+                imgSrc: "Lap3.jpg"
+            },
+            4: {
+                title: "Analisis Tren K3 Terpadu (S-Curve & Manpower)",
+                desc: "Menampilkan analisis data mendalam yang membandingkan proporsi penyelesaian temuan di lapangan serta perbandingan langsung distribusi jam kerja antara Staff dan pekerja Manpower.",
+                path: "Visualisasi_TrenK3.xlsx",
+                imgSrc: "Lap4.jpg"
+            }
+        };
+
+        function switchReport(index) {
+            activeReportIndex = index;
+            const tabButtons = document.querySelectorAll('.report-tab-btn');
+            tabButtons.forEach((btn, idx) => {
+                const btnIndex = idx + 1;
+                if (btnIndex === index) {
+                    btn.className = "report-tab-btn active w-full text-left p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-brand-600 text-white border border-brand-500/30 shadow-lg shadow-brand-900/50 transition-all duration-300 flex items-center gap-3 sm:gap-4 hover:scale-[1.02] transform cursor-pointer";
+                    btn.querySelector('div').className = "w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-white/20 flex items-center justify-center text-lg sm:text-xl shrink-0 backdrop-blur-sm";
+                    btn.querySelector('p').className = "text-[10px] sm:text-xs text-brand-100 mt-0.5";
+                } else {
+                    btn.className = "report-tab-btn w-full text-left p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-800/60 dark:bg-slate-800 text-slate-300 border border-slate-700 dark:border-slate-700 hover:bg-slate-700 hover:border-slate-500 transition-all duration-300 flex items-center gap-3 sm:gap-4 hover:scale-[1.02] transform cursor-pointer";
+                    btn.querySelector('div').className = "w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-slate-700 flex items-center justify-center text-lg sm:text-xl shrink-0";
+                    btn.querySelector('p').className = "text-[10px] sm:text-xs text-slate-400 mt-0.5";
+                }
+            });
+
+            document.querySelectorAll('.viewer-img').forEach((img) => img.classList.add('hidden'));
+            const activeImg = document.getElementById(`viewer-img-${index}`);
+            if (activeImg) activeImg.classList.remove('hidden');
+
+            const data = reportData[index];
+            document.getElementById('viewer-path').innerHTML = `<i class="fa-solid fa-folder-open mr-1"></i> ${data.path}`;
+            document.getElementById('report-title').innerHTML = `<i class="fa-solid fa-file-invoice text-red-400"></i> ${data.title}`;
+            document.getElementById('report-desc').textContent = data.desc;
+        }
+
+        function openLightbox() {
+            const data = reportData[activeReportIndex];
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lightboxImg.src = data.imgSrc;
+            lightboxImg.onerror = function() {
+                this.src = `https://placehold.co/1200x800/020617/ffffff?text=${encodeURIComponent(data.title)}`;
+            };
+            document.getElementById('lightbox-caption').textContent = data.title;
+            
+            lightbox.classList.remove('hidden');
+            setTimeout(() => { lightbox.style.opacity = '1'; }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.opacity = '0';
+            setTimeout(() => { 
+                lightbox.classList.add('hidden'); 
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+    </script>
+</body>
+</html>
